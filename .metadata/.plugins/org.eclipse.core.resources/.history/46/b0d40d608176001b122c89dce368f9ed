@@ -1,0 +1,13 @@
+package com.nisum.mapper;
+
+import org.mapstruct.Mapper;
+
+import com.nisum.dto.UserDemoRequest;
+import com.nisum.entity.DemoUser;
+
+@Mapper
+public interface DemoUserMapper {
+	
+	UserDemoRequest toDto(DemoUser user);
+
+}

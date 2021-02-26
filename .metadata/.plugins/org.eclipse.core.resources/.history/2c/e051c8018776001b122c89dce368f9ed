@@ -1,0 +1,32 @@
+package com.nisum.serviceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.nisum.dto.UserDemoRequest;
+import com.nisum.entity.DemoUser;
+import com.nisum.mapper.DemoUserMapper;
+import com.nisum.mapper.DemoUserMapperImpl;
+import com.nisum.repository.UserRepository;
+import com.nisum.service.UserService;
+
+public class UserServiceImpl implements UserService {
+
+	private static DemoUserMapper mapper = new DemoUserMapperImpl();
+	
+	private UserRepository userRepository;
+
+	@Autowired
+	public UserServiceImpl(UserRepository userRepository) {
+		super();
+		this.userRepository = userRepository;
+	}
+
+	@Override
+	public void createUser(UserDemoRequest userDemoRequest) {
+		
+		DemoUser demoUser = new DemoUser();
+		userRepository.save(demoUser);
+
+	}
+
+}

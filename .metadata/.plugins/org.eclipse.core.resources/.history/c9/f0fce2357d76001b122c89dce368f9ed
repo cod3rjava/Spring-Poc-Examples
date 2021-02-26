@@ -1,0 +1,7 @@
+package com.nisum.service;
+
+import com.nisum.serviceImpl.UserServiceImpl;
+
+public interface UserService {
+
+}

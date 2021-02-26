@@ -1,0 +1,103 @@
+package com.nisum.mapper;
+
+import com.nisum.dto.UserRequest;
+import com.nisum.dto.UserResponse;
+import com.nisum.entity.User;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Generated;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2021-02-24T18:20:05+0530",
+    comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 3.21.0.v20200304-1404, environment: Java 1.8.0_271 (Oracle Corporation)"
+)
+public class DemoUserMapperImpl implements DemoUserMapper {
+
+    @Override
+    public UserRequest toDtoRequest(User user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        UserRequest userRequest = new UserRequest();
+
+        userRequest.setEmail( user.getEmail() );
+        userRequest.setFirstname( user.getFirstname() );
+        userRequest.setIsActive( user.getIsActive() );
+        userRequest.setLastname( user.getLastname() );
+        userRequest.setPan( user.getPan() );
+        userRequest.setPassword( user.getPassword() );
+        userRequest.setRole( user.getRole() );
+        userRequest.setUsername( user.getUsername() );
+
+        return userRequest;
+    }
+
+    @Override
+    public UserResponse toDtoResponse(User user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        UserResponse userResponse = new UserResponse();
+
+        userResponse.setEmail( user.getEmail() );
+        userResponse.setFirstname( user.getFirstname() );
+        userResponse.setIsActive( user.getIsActive() );
+        userResponse.setLastname( user.getLastname() );
+        userResponse.setPan( user.getPan() );
+        userResponse.setRole( user.getRole() );
+        userResponse.setUsername( user.getUsername() );
+
+        return userResponse;
+    }
+
+    @Override
+    public User fromDto(UserRequest userRequest) {
+        if ( userRequest == null ) {
+            return null;
+        }
+
+        User user = new User();
+
+        user.setEmail( userRequest.getEmail() );
+        user.setFirstname( userRequest.getFirstname() );
+        user.setIsActive( userRequest.getIsActive() );
+        user.setLastname( userRequest.getLastname() );
+        user.setPan( userRequest.getPan() );
+        user.setPassword( userRequest.getPassword() );
+        user.setRole( userRequest.getRole() );
+        user.setUsername( userRequest.getUsername() );
+
+        return user;
+    }
+
+    @Override
+    public List<UserRequest> toDtoRequest(List<User> user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        List<UserRequest> list = new ArrayList<UserRequest>( user.size() );
+        for ( User user1 : user ) {
+            list.add( toDtoRequest( user1 ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<UserResponse> toDtoResponse(List<User> user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        List<UserResponse> list = new ArrayList<UserResponse>( user.size() );
+        for ( User user1 : user ) {
+            list.add( toDtoResponse( user1 ) );
+        }
+
+        return list;
+    }
+}

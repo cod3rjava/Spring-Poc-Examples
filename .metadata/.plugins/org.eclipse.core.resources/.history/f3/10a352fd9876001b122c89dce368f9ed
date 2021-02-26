@@ -1,0 +1,17 @@
+package com.nisum.mapper;
+
+import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
+import com.nisum.dto.UserDemoRequest;
+import com.nisum.entity.User;
+
+@Mapper
+public interface DemoUserMapper {
+	@Mapping(source = "username", target = "name")
+	UserDemoRequest toDto(User user);
+	@InheritInverseConfiguration(name = "toDto")
+	User fromDto(UserDemoRequest userDemoRequest);
+
+}

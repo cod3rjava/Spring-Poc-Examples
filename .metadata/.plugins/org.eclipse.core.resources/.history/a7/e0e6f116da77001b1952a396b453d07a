@@ -1,0 +1,85 @@
+package com.nisum.serviceImpl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.nisum.dto.UserRequest;
+import com.nisum.dto.UserResponse;
+import com.nisum.entity.User;
+import com.nisum.mapper.DemoUserMapper;
+import com.nisum.mapper.DemoUserMapperImpl;
+import com.nisum.repository.UserRepository;
+import com.nisum.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	private static DemoUserMapper mapper = new DemoUserMapperImpl();
+
+	private UserRepository userRepository;
+
+	@Autowired
+	public UserServiceImpl(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
+	@Override
+	public UserResponse createUser(UserRequest userRequest) {
+		User user = mapper.fromDto(userRequest);
+		return mapper.toDtoResponse(userRepository.save(user));
+	}
+
+	@Override
+	public List<UserResponse> getUsers() {
+		List<User> userList = userRepository.findAll();
+		return mapper.toDtoResponse(userList);
+	}
+
+	@Override
+	public UserResponse getUserById(Long id) {
+		Optional<User> optionalUser = userRepository.findById(id);
+		if (optionalUser.isPresent()) {
+			User user = optionalUser.get();
+			return mapper.toDtoResponse(user);
+		}
+		throw new RuntimeException("User Id Not Found");
+	}
+
+	@Override
+	public UserResponse updateUser(UserRequest userRequest, Long id) {
+		Optional<User> optionalUser = userRepository.findById(id);
+		if (optionalUser.isPresent()) {
+			User user = optionalUser.get();
+			User userResponse = mapper.fromDto(userRequest);
+			userResponse.setId(user.getId());
+			userRepository.save(userResponse);
+			return mapper.toDtoResponse(userResponse);
+		}
+		throw new RuntimeException("User Id Not Found");
+	}
+
+	@Override
+	public void deleteUserById(Long id) {
+		Optional<User> optionalUser = userRepository.findById(id);
+		if (optionalUser.isPresent()) {
+			User user = optionalUser.get();
+			userRepository.delete(user);
+			return;
+		}
+		throw new RuntimeException("User Id Not Found");
+	}
+
+	@Override
+	public UserResponse getUserByUsername(String username) {
+		Optional<User> optionalUser = userRepository.findByUsername(username);
+		if (optionalUser.isPresent()) {
+			User user = optionalUser.get();
+			return mapper.toDtoResponse(user);
+		}
+		throw new RuntimeException("Username Not Found");
+	}
+
+}

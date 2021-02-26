@@ -1,0 +1,27 @@
+package com.nisum.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Table(name = "demo_user")
+@Entity
+public class User {
+	@Id
+	@GeneratedValue
+	private Long id;
+	@Column(name="username", length = 50, nullable = false, unique = true)
+	private String username;
+	private String password;
+	private String firstname;
+	private String lastname;
+	private String email;
+	private String role;
+	@Column(name="username", length = 50, nullable = false, unique = true)
+	private String pan;
+	private Boolean isActive;
+	
+	
+}

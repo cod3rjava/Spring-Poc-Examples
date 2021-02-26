@@ -1,0 +1,5 @@
+package com.nisum.entity;
+
+public class DemoUser {
+
+}

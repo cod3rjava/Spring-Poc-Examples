@@ -1,0 +1,8 @@
+package com.nisum.service;
+
+import com.nisum.dto.UserDemoRequest;
+
+public interface UserService {
+	
+	DemoUser createUser(UserDemoRequest userDemoRequest);
+}
