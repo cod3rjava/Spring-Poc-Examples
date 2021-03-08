@@ -1,9 +1,0 @@
-package com.nisum.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.nisum.entity.DemoUser;
-
-public interface UserRepository extends JpaRepository<DemoUser, Long>{
-
-}

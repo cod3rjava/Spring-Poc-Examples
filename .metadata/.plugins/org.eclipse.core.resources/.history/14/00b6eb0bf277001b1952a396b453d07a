@@ -1,5 +1,0 @@
-package com.nisum.exception;
-
-public class UesrNotFoundException {
-
-}

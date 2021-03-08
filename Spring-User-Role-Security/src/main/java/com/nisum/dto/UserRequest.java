@@ -1,5 +1,8 @@
 package com.nisum.dto;
 
+import java.util.List;
+import java.util.Set;
+
 public class UserRequest {
 
 	private String username;
@@ -7,24 +10,22 @@ public class UserRequest {
 	private String firstname;
 	private String lastname;
 	private String email;
-	private String role;
 	private String pan;
 	private Boolean isActive;
-	public UserRequest() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public UserRequest(String username, String password, String firstname, String lastname, String email, String role,
-			String pan, Boolean isActive) {
+	private List<String> role;
+	public UserRequest(String username, String password, String firstname, String lastname, String email, String pan,
+			Boolean isActive, List<String> role) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
-		this.role = role;
 		this.pan = pan;
 		this.isActive = isActive;
+		this.role = role;
+	}
+	public UserRequest() {
 	}
 	public String getUsername() {
 		return username;
@@ -56,12 +57,6 @@ public class UserRequest {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
 	public String getPan() {
 		return pan;
 	}
@@ -74,12 +69,19 @@ public class UserRequest {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
+	public List<String> getRole() {
+		return role;
+	}
+	public void setRole(List<String> role) {
+		this.role = role;
+	}
 	@Override
 	public String toString() {
 		return "UserRequest [username=" + username + ", password=" + password + ", firstname=" + firstname
-				+ ", lastname=" + lastname + ", email=" + email + ", role=" + role + ", pan=" + pan + ", isActive="
-				+ isActive + "]";
+				+ ", lastname=" + lastname + ", email=" + email + ", pan=" + pan + ", isActive=" + isActive + ", role="
+				+ role + "]";
 	}
-
+	
+	
 	
 }

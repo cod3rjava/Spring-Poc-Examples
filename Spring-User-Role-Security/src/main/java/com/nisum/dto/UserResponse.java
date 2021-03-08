@@ -1,29 +1,37 @@
 package com.nisum.dto;
 
+import java.util.Set;
+
 public class UserResponse {
+
+	private Long id;
 	private String username;
 	private String firstname;
 	private String lastname;
 	private String email;
-	private String role;
 	private String pan;
 	private Boolean isActive;
+	private Set<String> role;
 
-	public UserResponse() {
+	public UserResponse(Long id, String username, String firstname, String lastname, String email, String pan,
+			Boolean isActive, Set<String> role) {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public UserResponse(String username, String firstname, String lastname, String email, String role, String pan,
-			Boolean isActive) {
-		super();
+		this.id = id;
 		this.username = username;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
-		this.role = role;
 		this.pan = pan;
 		this.isActive = isActive;
+		this.role = role;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -58,14 +66,6 @@ public class UserResponse {
 		this.email = email;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
 	public String getPan() {
 		return pan;
 	}
@@ -82,10 +82,18 @@ public class UserResponse {
 		this.isActive = isActive;
 	}
 
+	public Set<String> getRole() {
+		return role;
+	}
+
+	public void setRole(Set<String> role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
-		return "UserResponse [username=" + username + ", firstname=" + firstname + ", lastname=" + lastname + ", email="
-				+ email + ", role=" + role + ", pan=" + pan + ", isActive=" + isActive + "]";
+		return "UserResponse [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname="
+				+ lastname + ", email=" + email + ", pan=" + pan + ", isActive=" + isActive + ", role=" + role + "]";
 	}
 
 }
