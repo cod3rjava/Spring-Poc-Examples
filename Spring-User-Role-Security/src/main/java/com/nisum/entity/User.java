@@ -7,6 +7,7 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,7 +28,7 @@ public class User {
 	@Column(name = "pan", length = 50, nullable = false, unique = true)
 	private String pan;
 	private Boolean isActive;
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "roles_tab", joinColumns = @JoinColumn(name = "id"))
 	@Column(name = "role")
 	private List<String> role;
